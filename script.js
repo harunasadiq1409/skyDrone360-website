@@ -96,6 +96,7 @@ let notFoundPageBtn = notFoundPage.querySelector("button");
 preOrderBtns.forEach((btn) => {
 	btn.addEventListener("click", function () {
 		notFoundPage.classList.add("active");
+		inertThisItems([notFoundPage], false);
 		inertThisItems([header, main, footer], true);
 		notFoundPageBtn.focus();
 	});
@@ -103,5 +104,7 @@ preOrderBtns.forEach((btn) => {
 
 notFoundPageBtn.addEventListener("click", function () {
 	notFoundPage.classList.remove("active");
+	inertThisItems([notFoundPage], true);
+
 	inertThisItems([header, main, footer], false);
 });
