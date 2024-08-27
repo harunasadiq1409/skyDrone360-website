@@ -9,6 +9,7 @@ let BTT = document.querySelector(".back-to-top__btn");
 // useful function *****************************************************************************************
 
 function inertThisItems(items = [], status) {
+	//funcion$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	if (items) {
 		items.forEach((item) => {
 			if (status) {
@@ -93,18 +94,57 @@ let preOrderBtns = document.querySelectorAll(".pre-order-btn");
 let notFoundPage = document.querySelector(".page_not_found");
 let notFoundPageBtn = notFoundPage.querySelector("button");
 
-preOrderBtns.forEach((btn) => {
-	btn.addEventListener("click", function () {
-		notFoundPage.classList.add("active");
-		inertThisItems([notFoundPage], false);
-		inertThisItems([header, main, footer], true);
-		notFoundPageBtn.focus();
-	});
-});
+function open404Page() {
+	//funcion$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	notFoundPage.classList.add("active");
+	inertThisItems([notFoundPage], false);
+	inertThisItems([header, main, footer], true);
+	notFoundPageBtn.focus();
+}
 
+preOrderBtns.forEach((btn) => {
+	btn.addEventListener("click", open404Page);
+});
 notFoundPageBtn.addEventListener("click", function () {
 	notFoundPage.classList.remove("active");
 	inertThisItems([notFoundPage], true);
 
 	inertThisItems([header, main, footer], false);
+});
+
+// handle Email //////////////////////////////////////////////////////////////////
+
+let signUpBtn = document.querySelector(".sign-up-btn");
+let emailPage = document.querySelector(".email_page");
+let submitBtn = document.querySelector(".submit-btn");
+let cancelEmailPageBtn = document.querySelector(".close-email");
+
+function closeEmailModel() {
+	//funcion$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	emailPage.classList.remove("open");
+	inertThisItems([header, main, footer], false);
+	inertThisItems([emailPage], true);
+}
+signUpBtn.addEventListener("click", function () {
+	emailPage.classList.add("open");
+	inertThisItems([header, main, footer], true);
+	inertThisItems([emailPage], false);
+	cancelEmailPageBtn.focus();
+});
+
+cancelEmailPageBtn.addEventListener("click", closeEmailModel);
+
+// handle form ///////////////////////////////////////////////////////////////
+let form = document.querySelector("form");
+let fullName = document.getElementById("names");
+let notFoundPage_h2 = notFoundPage.querySelector("h2");
+form.addEventListener("submit", function (e) {
+	let fullNameValue = fullName.value;
+	e.preventDefault();
+
+	if (fullNameValue) {
+		notFoundPage_h2.innerText = `thank you ${fullNameValue} 🙏 for checking this website ❤`;
+		closeEmailModel();
+		open404Page();
+	}
 });

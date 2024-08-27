@@ -162,10 +162,7 @@ a {
 	font-size: 16px;
 	font-family: "Inter", sans-serif;
 	font-weight: 500;
-	&:focus {
-		border: 2px solid var(--color-2);
-		outline: 2px solid var(--color-1);
-	}
+	border: 2px solid transparent;
 
 	svg {
 		fill: var(--color-2);
@@ -331,14 +328,14 @@ header {
 	}
 
 	.btn-nav--pre-order {
-		width: 0;
+		width: 0 !important;
 		overflow: hidden;
-		transition: all 0.3s ease-in-out;
+		transition: width 0.3s ease-in-out;
 		padding-inline: 0;
-		-webkit-transition: all 0.3s ease-in-out;
-		-moz-transition: all 0.3s ease-in-out;
-		-ms-transition: all 0.3s ease-in-out;
-		-o-transition: all 0.3s ease-in-out;
+		-webkit-transition: width 0.3s ease-in-out;
+		-moz-transition: width 0.3s ease-in-out;
+		-ms-transition: width 0.3s ease-in-out;
+		-o-transition: width 0.3s ease-in-out;
 	}
 	.btn-nav--pre-order.active {
 		width: 200.672px;
@@ -896,82 +893,87 @@ main {
 	height: 100%;
 	color: var(--color-1);
 	background-color: var(--bg-color);
-
+	gap: var(--gap-100);
+	padding: var(--gap-100);
 	z-index: 10000;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transition: transform 0.3s ease-in-out;
+	-moz-transition: transform 0.3s ease-in-out;
+	-ms-transition: transform 0.3s ease-in-out;
+	-o-transition: transform 0.3s ease-in-out;
 	transform: translateX(-150%);
-	transition: 0.3s ease-in-out;
+	-webkit-transform: translateX(-150%);
+	-moz-transform: translateX(-150%);
+	-ms-transform: translateX(-150%);
+	-o-transform: translateX(-150%);
+}
+.email_page_left {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-	.close {
-		top: 50px;
-		right: var(--section_padding);
+	flex-basis: 50%;
+}
+
+.email_page_right {
+	flex-basis: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.close-email {
+		background: transparent;
+		position: fixed;
+		right: var(--gap-40);
+		top: var(--gap-40);
 		cursor: pointer;
-		stroke: white;
+
 		position: absolute;
-	}
-	.email_page_left {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: var(--section_padding);
-		flex-basis: 50%;
-	}
 
-	.email_page_right {
-		background: var(--color-1);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: end;
-		padding: var(--section_padding);
-		flex-basis: 50%;
+		svg {
+			width: 24px;
+			height: 28px;
+			stroke-width: 2;
+			line {
+				stroke: var(--color-1);
+			}
+		}
 	}
-
 	.form {
 		width: 100%;
-		position: relative;
-		form {
-			background-color: #fffbf41c;
-			padding: 30px;
+		.input_item {
 			display: flex;
 			flex-direction: column;
-			align-items: start;
-			border-radius: var(--border_radius_12);
-			gap: 20px;
-			.input_item {
+			align-items: flex-start;
+			margin-block: var(--gap-20);
+			label {
+				display: block;
 				width: 100%;
-				label {
-					font-family: var(--text_font);
-					font-size: 1rem;
-					opacity: 0.8;
-					color: var(--color_2);
-					font-weight: 600;
-				}
-
-				.input {
-					width: 100%;
-					display: inline-block;
-					padding: 7px;
-
-					font-size: 1rem;
-					background-color: transparent;
-
-					border: none;
-					border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-					color: var(--color_2);
-				}
-				.input::placeholder {
-					color: rgba(167, 167, 167, 0.8);
-					font-style: italic;
-					font-size: 1rem;
-				}
+				font-family: "poppins" sans-serif;
+				font-size: 1rem;
+				font-weight: 500;
+			}
+			.input {
+				display: block;
+				width: 100%;
+				font-family: "poppins" sans-serif;
+				font-size: 1rem;
+			}
+			.input {
+				border: 1px solid transparent;
+				border-bottom: 1px solid var(--color-1);
+				background: none;
+				padding: 8px;
 			}
 		}
 	}
 }
 .email_page.open {
-	// transform: translateX(0%);
+	transform: translateX(0%);
+	-webkit-transform: translateX(0%);
+	-moz-transform: translateX(0%);
+	-ms-transform: translateX(0%);
+	-o-transform: translateX(0%);
 }
 
 @keyframes logo-slide {
@@ -1016,6 +1018,10 @@ main {
 }
 
 @media (max-width: 770px) {
+	.email_page {
+		gap: var(--gap-40);
+		padding: var(--gap-40);
+	}
 	.header-wrapper {
 		justify-content: space-between;
 		.nav-btn {
@@ -1029,9 +1035,8 @@ main {
 			-moz-border-radius: 4px;
 			-ms-border-radius: 4px;
 			-o-border-radius: 4px;
-			&:focus {
-				border: 3px solid var(--color-2);
-			}
+			border: 3px solid transparent;
+
 			.btn-line {
 				width: 25px;
 				height: 2px;
@@ -1158,6 +1163,12 @@ main {
 }
 
 @media (max-width: 520px) {
+	.email_page {
+		flex-direction: column;
+		gap: 40px;
+		overflow: scroll;
+		padding-top: 100px;
+	}
 	:root {
 		--gap-40: var(--gap-20);
 		--gap-150: var(--gap-100);
