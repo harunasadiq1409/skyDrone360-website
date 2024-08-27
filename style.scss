@@ -77,8 +77,7 @@ a {
 }
 // fonts ##################################################################################################
 .fsh-1 {
-	// font-size: clamp(2.375rem, 1.9505rem + 1.8868vw, 4rem);
-	font-size: 52px;
+	font-size: clamp(2.5rem, 2.25rem + 1.1111vw, 3.25rem);
 	font-family: "Inter", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 600;
@@ -94,8 +93,7 @@ a {
 }
 
 .fsh-3 {
-	// font-size: clamp(1.875rem, 1.8423rem + 0.1451vw, 2rem);
-	font-size: 28px;
+	font-size: clamp(1.75rem, 1.7083rem + 0.1852vw, 1.875rem);
 	font-family: "Inter", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 500;
@@ -125,24 +123,21 @@ a {
 }
 
 .fsb-1 {
-	font-size: clamp(1.625rem, 1.527rem + 0.4354vw, 2rem);
-	font-size: 20px;
+	font-size: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem);
 	font-family: "Poppins", sans-serif;
 
 	font-weight: 400;
 	font-style: normal;
 }
 .fsb-2 {
-	font-size: clamp(1rem, 1rem + 0vw, 1rem);
-	font-size: 14px;
+	font-size: clamp(1rem, 1.0417rem + -0.1852vw, 0.875rem);
 	font-family: "Poppins", sans-serif;
 
 	font-weight: 400;
 	font-style: normal;
 }
 .fsb-3 {
-	font-size: clamp(1rem, 1rem + 0vw, 1rem);
-	font-size: 12px;
+	font-size: clamp(0.875rem, 0.9167rem + -0.1852vw, 0.75rem);
 	font-family: "Poppins", sans-serif;
 
 	font-weight: 600;
@@ -483,7 +478,7 @@ main {
 			gap: var(--gap-30);
 			.text-content {
 				text-align: center;
-				h2 {
+				width: 100% h2 {
 					margin-bottom: var(--gap-20);
 				}
 			}
@@ -1133,7 +1128,10 @@ main {
 			}
 		}
 	}
-
+	.img-true-css {
+		background-attachment: local !important;
+		height: 356px !important;
+	}
 	.price {
 		.price-wrapper {
 			flex-direction: column;
