@@ -327,8 +327,8 @@ header {
 		}
 	}
 
-	.btn-nav--pre-order {
-		width: 0 !important;
+	.btn-nav-pre-order {
+		width: 0px;
 		overflow: hidden;
 		transition: width 0.3s ease-in-out;
 		padding-inline: 0;
@@ -336,12 +336,14 @@ header {
 		-moz-transition: width 0.3s ease-in-out;
 		-ms-transition: width 0.3s ease-in-out;
 		-o-transition: width 0.3s ease-in-out;
+		border: 0px solid transparent;
 	}
-	.btn-nav--pre-order.active {
+	.btn-nav-pre-order.active {
 		width: 200.672px;
 		padding-inline: 18px;
+		border: 2px solid transparent;
 	}
-	&:has(.btn-nav--pre-order.active) {
+	&:has(.btn-nav-pre-order.active) {
 		.logo {
 			flex-grow: 0;
 		}
@@ -1018,6 +1020,17 @@ main {
 }
 
 @media (max-width: 770px) {
+	main .hero-section .hero {
+		background-position: right;
+		transition: background-position 3s ease-in-out;
+		-webkit-transition: background-position 3s ease-in-out;
+		-moz-transition: background-position 3s ease-in-out;
+		-ms-transition: background-position 3s ease-in-out;
+		-o-transition: background-position 3s ease-in-out;
+		&:hover {
+			background-position: left;
+		}
+	}
 	.email_page {
 		gap: var(--gap-40);
 		padding: var(--gap-40);

@@ -4,7 +4,7 @@ let footer = document.querySelector("footer");
 let home = document.getElementById("home");
 let sectionLinks = document.querySelectorAll(".link-section");
 let nav = document.querySelector("nav");
-let headerBtn = header.querySelector(".btn-nav--pre-order");
+let headerBtn = header.querySelector(".btn-nav-pre-order");
 let BTT = document.querySelector(".back-to-top__btn");
 // useful function *****************************************************************************************
 
