@@ -1174,6 +1174,22 @@ main {
 		}
 	}
 }
+@media (max-width: 770px) and (prefers-reduced-motion) {
+	&[aria-expanded="true"] {
+		~ nav {
+			opacity: 1;
+		}
+	}
+	nav {
+		translate: 0;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		-webkit-transition: opacity 0.3s ease-in-out;
+		-moz-transition: opacity 0.3s ease-in-out;
+		-ms-transition: opacity 0.3s ease-in-out;
+		-o-transition: opacity 0.3s ease-in-out;
+	}
+}
 
 @media (max-width: 520px) {
 	.email_page {

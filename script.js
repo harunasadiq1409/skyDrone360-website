@@ -79,12 +79,28 @@ accordions.forEach((accordion) => {
 });
 
 // nav button toggle//////////////////////////////////////////////////////////
+let media = window.matchMedia("(width < 770px)");
 let navBtn = document.querySelector(".nav-btn");
 let links = nav.querySelectorAll("a");
+
+function setNav(e) {
+	if (e.matches) {
+		nav.setAttribute("inert", "");
+		nav.style.transition = "none";
+	} else {
+		nav.removeAttribute("inert");
+	}
+}
+
+setNav(media);
+media.addEventListener("change", function () {
+	setNav(media);
+});
 navBtn.addEventListener("click", function () {
 	let MenuIsOpen = navBtn.getAttribute("aria-expanded");
 	MenuIsOpen == "false" ? navBtn.setAttribute("aria-expanded", "true") : navBtn.setAttribute("aria-expanded", "false");
 	MenuIsOpen == "false" ? inertThisItems([main, footer], true) : inertThisItems([main, footer], false);
+	nav.removeAttribute("style");
 	navBtn.focus();
 });
 
@@ -93,6 +109,9 @@ links.forEach((link) => {
 		navBtn.setAttribute("aria-expanded", "false");
 		inertThisItems([main, footer], false);
 		navBtn.focus();
+		setTimeout(() => {
+			nav.style.transition = "none";
+		}, 500);
 	});
 });
 
