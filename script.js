@@ -14,8 +14,10 @@ function inertThisItems(items = [], status) {
 		items.forEach((item) => {
 			if (status) {
 				item.setAttribute("inert", "");
+				document.body.style.overflow = "hidden";
 			} else {
 				item.removeAttribute("inert");
+				document.body.style.overflow = "scroll";
 			}
 		});
 	}
@@ -24,7 +26,13 @@ function inertThisItems(items = [], status) {
 // ******************************************************************************************************
 window.addEventListener("scroll", function () {
 	// handle back to top  ///////////////////////////////////////////////////////////
+	let bttSetTimeOut;
 	BTT.classList.toggle("active", window.scrollY > 300);
+	if (window.scrollY) {
+		bttSetTimeOut = window.setTimeout(() => {
+			BTT.classList.remove("active");
+		}, 10000);
+	}
 	// handle header transformation  ///////////////////////////////////////////////////////////
 	header.classList.toggle("active", window.scrollY > 50);
 	headerBtn.classList.toggle("active", window.scrollY > home.clientHeight - 200);
