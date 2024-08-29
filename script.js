@@ -14,10 +14,10 @@ function inertThisItems(items = [], status) {
 		items.forEach((item) => {
 			if (status) {
 				item.setAttribute("inert", "");
-				document.body.style.overflow = "hidden";
+				document.body.style.overflowY = "hidden";
 			} else {
 				item.removeAttribute("inert");
-				document.body.style.overflow = "scroll";
+				document.body.style.overflowY = "scroll";
 			}
 		});
 	}
@@ -100,6 +100,7 @@ navBtn.addEventListener("click", function () {
 	let MenuIsOpen = navBtn.getAttribute("aria-expanded");
 	MenuIsOpen == "false" ? navBtn.setAttribute("aria-expanded", "true") : navBtn.setAttribute("aria-expanded", "false");
 	MenuIsOpen == "false" ? inertThisItems([main, footer], true) : inertThisItems([main, footer], false);
+	nav.removeAttribute("inert");
 	nav.removeAttribute("style");
 	navBtn.focus();
 });
@@ -150,12 +151,12 @@ function closeEmailModel() {
 	//funcion$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	emailPage.classList.remove("open");
 	inertThisItems([header, main, footer], false);
-	inertThisItems([emailPage], true);
+	emailPage.setAttribute("inert", "");
 }
 signUpBtn.addEventListener("click", function () {
 	emailPage.classList.add("open");
+	emailPage.removeAttribute("inert");
 	inertThisItems([header, main, footer], true);
-	inertThisItems([emailPage], false);
 	cancelEmailPageBtn.focus();
 });
 

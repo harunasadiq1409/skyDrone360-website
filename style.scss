@@ -259,7 +259,7 @@ svg {
 header {
 	margin-inline: auto;
 	max-width: var(--max-width);
-	z-index: 1005;
+	z-index: 1009;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -1155,8 +1155,7 @@ main {
 			flex-direction: column;
 		}
 	}
-	.why-choose-us {
-	}
+
 	.faqs {
 		flex-direction: column;
 	}
@@ -1175,7 +1174,7 @@ main {
 	}
 }
 @media (max-width: 770px) and (prefers-reduced-motion) {
-	&[aria-expanded="true"] {
+	.nav-btn[aria-expanded="true"] {
 		~ nav {
 			opacity: 1;
 		}
