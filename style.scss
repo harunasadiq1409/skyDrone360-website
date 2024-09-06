@@ -276,6 +276,23 @@ header {
 	margin-inline: auto;
 	.logo {
 		flex-grow: 1;
+		transition: all 0.2s ease-in-out;
+		text-wrap: nowrap;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		.logo-text {
+			display: inline-block;
+			height: 24px;
+			width: 150px;
+			translate: 0% 0%;
+			transition: all 0.2s ease-in-out;
+			&.active {
+				width: 0;
+				translate: -20% 0%;
+			}
+		}
 	}
 	.nav-btn {
 		display: none;
@@ -330,12 +347,12 @@ header {
 	.btn-nav-pre-order {
 		width: 0px;
 		overflow: hidden;
-		transition: width 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
 		padding-inline: 0;
-		-webkit-transition: width 0.3s ease-in-out;
-		-moz-transition: width 0.3s ease-in-out;
-		-ms-transition: width 0.3s ease-in-out;
-		-o-transition: width 0.3s ease-in-out;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
 		border: 0px solid transparent;
 	}
 	.btn-nav-pre-order.active {
@@ -369,6 +386,26 @@ main {
 	// home aka hero section///////////////////////////////////////////////////////////////
 	.hero-section {
 		padding-top: 100px;
+		.hero-text {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+			margin-block: 150px;
+			right: 0;
+			.hero__text-wrapper {
+				text-align: center;
+				margin-top: 100px;
+				padding-inline: 110px;
+				color: var(--color-2);
+
+				h1 {
+					text-transform: capitalize;
+					margin-bottom: 12px;
+				}
+			}
+		}
 		.hero {
 			display: flex;
 			flex-direction: column;
@@ -382,17 +419,6 @@ main {
 			background-position: center;
 			background-size: cover;
 			gap: var(--gap-30);
-			&__text-wrapper {
-				text-align: center;
-				margin-top: 100px;
-				padding-inline: 110px;
-				color: var(--color-2);
-
-				h1 {
-					text-transform: capitalize;
-					margin-bottom: 12px;
-				}
-			}
 		}
 	}
 	// about us ///////////////////////////////////////////////////////////////
@@ -1020,17 +1046,6 @@ main {
 }
 
 @media (max-width: 770px) {
-	main .hero-section .hero {
-		background-position: right;
-		transition: background-position 3s ease-in-out;
-		-webkit-transition: background-position 3s ease-in-out;
-		-moz-transition: background-position 3s ease-in-out;
-		-ms-transition: background-position 3s ease-in-out;
-		-o-transition: background-position 3s ease-in-out;
-		&:hover {
-			background-position: left;
-		}
-	}
 	.email_page {
 		gap: var(--gap-40);
 		padding: var(--gap-40);
@@ -1125,8 +1140,26 @@ main {
 	main .features .feature-middle__body .content-4 {
 		flex-direction: column;
 	}
-	main .hero-section .hero__text-wrapper {
-		padding-inline: var(--gap-20);
+	main .hero-section {
+		.hero__text-wrapper {
+			padding-inline: var(--gap-20) !important;
+			color: var(--color-1) !important;
+		}
+		button {
+			background: var(--color-1) !important;
+			color: var(--color-2) !important;
+			svg {
+				fill: var(--color-2) !important;
+			}
+		}
+		.hero-text {
+			position: static !important;
+			margin-block: -100px 50px !important;
+		}
+		.hero {
+			height: 356px;
+			background-image: url(/assets/images/hero-bg.png);
+		}
 	}
 	.about-us {
 		&__content {
@@ -1191,6 +1224,14 @@ main {
 }
 
 @media (max-width: 520px) {
+	main .hero-section {
+		.hero-text .hero__text-wrapper {
+			padding-inline: 0px;
+		}
+		.hero {
+			height: 240px;
+		}
+	}
 	.email_page {
 		flex-direction: column;
 		gap: 40px;
@@ -1201,11 +1242,7 @@ main {
 		--gap-40: var(--gap-20);
 		--gap-150: var(--gap-100);
 	}
-	.hero {
-		height: calc(100vh - 120px) !important;
-		overflow: scroll;
-		padding-block: 20px;
-	}
+
 	.about-us {
 		&__content__image {
 			display: none !important;

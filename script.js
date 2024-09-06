@@ -1,4 +1,5 @@
 let header = document.querySelector("header");
+let logoText = document.querySelector(".logo-text");
 let main = document.querySelector("main");
 let footer = document.querySelector("footer");
 let home = document.getElementById("home");
@@ -26,15 +27,11 @@ function inertThisItems(items = [], status) {
 // ******************************************************************************************************
 window.addEventListener("scroll", function () {
 	// handle back to top  ///////////////////////////////////////////////////////////
-	let bttSetTimeOut;
-	BTT.classList.toggle("active", window.scrollY > 300);
-	if (window.scrollY) {
-		bttSetTimeOut = window.setTimeout(() => {
-			BTT.classList.remove("active");
-		}, 10000);
-	}
+	BTT.classList.toggle("active", window.scrollY >  home.clientHeight - 200);
 	// handle header transformation  ///////////////////////////////////////////////////////////
 	header.classList.toggle("active", window.scrollY > 50);
+	logoText.classList.toggle("active", window.scrollY > 50);
+
 	headerBtn.classList.toggle("active", window.scrollY > home.clientHeight - 200);
 	let headerBtnIsActive = headerBtn.classList.contains("active");
 	headerBtnIsActive ? headerBtn.removeAttribute("inert") : headerBtn.setAttribute("inert", "");
